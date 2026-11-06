@@ -36,9 +36,13 @@ def main(path):
         source = plugin.get("source")
         if not isinstance(source, dict) or source.get("source") != "git-subdir":
             fail("%s: the source must be a git-subdir pinned to a release tag" % name)
-        repo, ref = source.get("url", ""), source.get("ref", "")
-        if not re.match(r"^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$", repo):
-            fail("%s: url must be owner/repo on GitHub: %r" % (name, repo))
+        url, ref = source.get("url", ""), source.get("ref", "")
+        # The full https address: the owner/repo shorthand makes Claude Code try SSH
+        # first, which fails for anyone without a GitHub key.
+        found = re.match(r"^https://github\.com/([A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+?)(?:\.git)?$", url)
+        if not found:
+            fail("%s: url must be the https address of a GitHub repository: %r" % (name, url))
+        repo = found.group(1)
         if not TAG.match(ref):
             fail("%s: ref must be a release tag such as v1.2.3: %r" % (name, ref))
         if not source.get("path"):

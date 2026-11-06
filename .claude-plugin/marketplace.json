@@ -11,7 +11,7 @@
       "homepage": "https://github.com/Glacius-Labs/Markitect",
       "source": {
         "source": "git-subdir",
-        "url": "Glacius-Labs/Markitect",
+        "url": "https://github.com/Glacius-Labs/Markitect.git",
         "path": "plugin",
         "ref": "v0.16.0"
       }
