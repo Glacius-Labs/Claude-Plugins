@@ -13,8 +13,8 @@
         "source": "git-subdir",
         "url": "https://github.com/Glacius-Labs/Markitect.git",
         "path": "plugin",
-        "ref": "v0.33.0",
-        "sha": "3addad9a32b92d549975aaa3ad62efe88559f629"
+        "ref": "v0.33.1",
+        "sha": "550a3e16523c2d6c24f788bc28a77f0ed13e68e8"
       }
     }
   ]
